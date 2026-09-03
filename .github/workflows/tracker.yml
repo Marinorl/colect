@@ -1,9 +1,9 @@
-name: Tracker Colectivos
+name: Tracker Colectivos 24/7
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Disparo manual
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/15 * * * *' # Cada 15 minutos (00, 15, 30, 45 de cada hora)
 
 concurrency:
   group: scraping-job
@@ -55,6 +55,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "Sin datos nuevos."
           else
-            git commit -m "Update dataset [skip ci]"
+            git commit -m "Registro automático 24/7 [skip ci]"
             git push
           fi
